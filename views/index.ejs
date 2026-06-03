@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mint Blog</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Mint Blog🍃</h1>
+        </header>
+
+        <section class="hero">
+            <h2>Welcome to my Blog page.</h2>
+            <p>Simple blog built with Node, Express & EJS</p>
+        </section>
+
+        <section class="create">
+            <form action="/add" method="post">
+                <input type="text" name="title" placeholder="post-title" required>
+                <textarea name="content" placeholder="Write your text here.." required></textarea>
+                <button>Add Post</button>
+            </form>
+        </section>
+
+        <section class="posts">
+            <% posts.forEach((post, index)=>{ %>
+                <div class="card">
+                    <h3><%= post.title %></h3>
+                    <p><%= post.content.length > 120 
+                        ? post.content.substring(0, 120) + "..." 
+                        : post.content %>
+                    </p>
+                    
+                    <div class="post-actions">
+                        <a class="read-more" href="/post/<%= index %>">Read more →</a>
+                        <a href="/edit/<%=index%>" class="edit-btn"> Edit</a>
+                        
+
+                        <form action ="/delete/<%=index%>" method="post">
+                            <button class="delete">🗑 Delete</button>
+                        </form>
+                    </div>
+                </div>
+          <%  }) %>
+        </section>
+
+        <footer>
+            <p>
+                Made with ❤️ from London for You.<br>
+                © <%= year %> Mint Blog</p>
+        </footer>
+    </body>
+</html>

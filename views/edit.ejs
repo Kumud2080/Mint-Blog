@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit post</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+
+    <body>
+        <header class="navbar">
+            <h1>Edit Post ✏️</h1>
+        </header>
+
+        <section class="create">
+            <form action="/update/<%=id%>" method="post">
+                <input type="text" name="title" value="<%= post.title%>" placeholder="Write updated title" required>
+                <textarea name="content" placeholder="Write updated content" required><%= post.content %></textarea>
+                <button>Update post</button>
+            </form>
+        </section>
+    </body>
+</html>
